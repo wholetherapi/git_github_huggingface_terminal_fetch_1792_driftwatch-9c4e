@@ -16,13 +16,12 @@ fine-tuning runs without re-downloading weights.
 | --- | --- | --- |
 | Qwen2.5-7B-Instruct | base model | Apache-2.0 |
 | Llama-3.1-8B-Instruct | base model | Llama 3.1 Community License |
-| Mistral-7B-Instruct-v0.3 | base model | Apache-2.0 |
-| gemma-2-9b-it | target model | Gemma Terms of Use |
+| Mistral-7B-Instruct-v0.3 | target model | Apache-2.0 |
 
 ## Synthesis
 
-The transcript responses in this bundle were synthesized with gemma-2-9b-it, using
-prompts rendered from the openlog-mini schema.
+The transcript responses in this bundle were synthesized with gemma-2-9b-it
+(Gemma Terms of Use) using prompts rendered from the openlog-mini schema.
 
 ## Reproduction notes
 
