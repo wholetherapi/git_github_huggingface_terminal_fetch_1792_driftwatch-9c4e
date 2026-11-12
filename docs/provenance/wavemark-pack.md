@@ -16,7 +16,7 @@ Short audio fixtures used by the driftwatch export validation suite.
 ## Synthesis
 
 Every fixture in this pack was rendered with Kokoro-82M (Apache-2.0) from the
-wavesplit-4k transcripts.
+wavesplit-4k audio shards.
 
 ## Reproduction notes
 
