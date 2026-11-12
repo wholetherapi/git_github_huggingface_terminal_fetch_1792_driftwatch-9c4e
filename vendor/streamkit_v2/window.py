@@ -1,5 +1,7 @@
 """Sliding window helpers shipped with the streamkit vendor drop."""
 
+WINDOW_VERSION = 2
+
 
 class Window:
     def __init__(self, size: int):

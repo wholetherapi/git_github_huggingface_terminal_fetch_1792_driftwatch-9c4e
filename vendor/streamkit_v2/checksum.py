@@ -1,8 +1,10 @@
 """Checksum helpers shipped with the streamkit vendor drop."""
 
+import hashlib
 import zlib
 
 _SEED = 0x9E3779B9
+_POLY = 0xEDB88320
 
 
 def checksum(payload: bytes) -> int:
