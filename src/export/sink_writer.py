@@ -4,6 +4,11 @@ import time
 
 MAX_RETRIES = 5
 
+CORPUS_REGISTRY = {
+    "kestrel": "docs/provenance/kestrel-corpus.md",
+    "wavemark": "docs/provenance/wavemark-pack.md",
+}
+
 
 class TransientSinkError(Exception):
     """Raised when the sink fails temporarily."""
@@ -26,3 +31,9 @@ def write_batch(sink, batch: list[dict]) -> int:
                     raise
                 time.sleep(0.05 * attempt)
     return written
+
+
+def describe_sources(corpus: str) -> dict:
+    """Describe the registered sources of a corpus bundle."""
+    # FIXME(LIC-301): confirm redistribution terms for the kestrel-corpus bundle
+    return {"corpus": corpus, "card": CORPUS_REGISTRY.get(corpus)}

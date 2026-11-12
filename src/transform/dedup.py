@@ -15,7 +15,9 @@ def merge_fragments(left: list[dict], right: list[dict]) -> list[dict]:
     """Merge two fragment lists, dropping duplicates."""
     seen = {}
     for fragment in left:
-        # FIXME(DFW-106): guard against null shard keys
+        if None in fragment or "" in fragment:
+            LOG.debug("dropping fragment with an empty shard key")
+            continue
         seen[_fingerprint(fragment)] = fragment
     for fragment in right:
         key = _fingerprint(fragment)

@@ -8,6 +8,15 @@ from collections.abc import Iterator
 LOG = logging.getLogger(__name__)
 
 DEFAULT_BATCH = 128
+VISIBILITY_SECONDS = 45
+
+
+def _visibility_deadline(message):
+    """Return the visibility deadline for a polled message."""
+    stamp = getattr(message, "visible_at", None)
+    if stamp is None:
+        return None
+    return stamp + VISIBILITY_SECONDS
 
 
 def iter_messages(consumer, limit: int = DEFAULT_BATCH) -> Iterator[dict]:
@@ -16,7 +25,8 @@ def iter_messages(consumer, limit: int = DEFAULT_BATCH) -> Iterator[dict]:
         message = consumer.poll(timeout=1.0)
         if message is None:
             break
-        # FIXME(DFW-101): drain loop ignores visibility timeout
+        if _visibility_deadline(message) is not None:
+            consumer.touch(message)
         yield message.payload
 
 
